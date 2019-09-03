@@ -5,6 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.ResponseStatus
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.DeleteMapping
+import org.springframework.web.bind.annotation.PutMapping
 
 @RestController
 @RequestMapping("/api/books")
@@ -24,14 +29,14 @@ class BookController {
     }
 
     @GetMapping("/{id}")
-    public Book findOne(@PathVariable Long id) {
+    public Product findOne(@PathVariable Long id) {
         return productList.findById(id)
             .orElseThrow(ProductNotFoundException::new);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Book create(@RequestBody Product product) {
+    public Product create(@RequestBody Product product) {
         return productList.save(product);
     }
 
