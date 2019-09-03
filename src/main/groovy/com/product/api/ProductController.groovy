@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping
 
 @RestController
 @RequestMapping("/api/books")
-class BookController {
+class ProductController {
 
     @Autowired
     private ProductList productList;
