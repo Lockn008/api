@@ -11,44 +11,44 @@ import org.springframework.web.bind.annotation.RestController
 class BookController {
 
     @Autowired
-    private BookRepository bookRepository;
+    private ProductList productList;
 
     @GetMapping
     public Iterable findAll() {
-        return bookRepository.findAll();
+        return productList.findAll();
     }
 
     @GetMapping("/title/{bookTitle}")
-    public List findByTitle(@PathVariable String bookTitle) {
-        return bookRepository.findByTitle(bookTitle);
+    public List findByTitle(@PathVariable String productName) {
+        return productList.findByTitle(productName);
     }
 
     @GetMapping("/{id}")
     public Book findOne(@PathVariable Long id) {
-        return bookRepository.findById(id)
-            .orElseThrow(BookNotFoundException::new);
+        return productList.findById(id)
+            .orElseThrow(ProductNotFoundException::new);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Book create(@RequestBody Book book) {
-        return bookRepository.save(book);
+    public Book create(@RequestBody Product product) {
+        return productList.save(product);
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
-        bookRepository.findById(id)
-            .orElseThrow(BookNotFoundException::new);
-        bookRepository.deleteById(id);
+        productList.findById(id)
+            .orElseThrow(ProductNotFoundException::new);
+        productList.deleteById(id);
     }
 
     @PutMapping("/{id}")
-    public Book updateBook(@RequestBody Book book, @PathVariable Long id) {
-        id (book.getId() != id) {
-            throw new BookIdMismatchException();
+    public Product updateProduct(@RequestBody Product product, @PathVariable Long id) {
+        id (product.getId() != id) {
+            throw new ProductIdMismatchException();
         }
-        bookRepository.findById(id)
-            .orElseThrow(BookNotFoundException::new);
-        return bookRepository.save(book);
+        productList.findById(id)
+            .orElseThrow(ProductNotFoundException::new);
+        return productList.save(product);
     }
 }
