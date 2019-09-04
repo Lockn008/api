@@ -1,20 +1,25 @@
 package com.product.api
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo
+import org.springframework.data.annotation.Id
+
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
 
 @Entity
-public class Product {
+class Product {
 
-    @JsonTypeInfo.Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    //add @canonical, look it up
 
-    @Column(nullable = false, unique = true)
-    private String productName;
+    @Id
+    @GeneratedValue //(strategy = GenerationType.AUTO)
+    long id;
 
-    @Column(nullable = false)
-    private float unitPrice;
+//    @Column(nullable = false, unique = true)
+    String productName;
 
-    @Column()
-    private int inventory;
+//    @Column(nullable = false)
+    float unitPrice;
+
+//    @Column()
+    int inventory;
 }

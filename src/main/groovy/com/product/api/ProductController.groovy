@@ -19,41 +19,41 @@ class ProductController {
     private ProductList productList;
 
     @GetMapping
-    public Iterable findAll() {
+    Iterable findAll() {
         return productList.findAll();
     }
 
     @GetMapping("/title/{bookTitle}")
-    public List findByTitle(@PathVariable String productName) {
+    List findByTitle(@PathVariable String productName) {
         return productList.findByTitle(productName);
     }
 
     @GetMapping("/{id}")
-    public Product findOne(@PathVariable Long id) {
+    Product findOne(@PathVariable Long id) {
         return productList.findById(id)
-            .orElseThrow(ProductNotFoundException::new);
+//            .orElseThrow(new ProductNotFoundException())
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Product create(@RequestBody Product product) {
-        return productList.save(product);
-    }
+//    @ResponseStatus(HttpStatus.CREATED)
+//    Product create(@RequestBody Product product) {
+//        return productList.save(product);
+//    }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         productList.findById(id)
-            .orElseThrow(ProductNotFoundException::new);
+//            .orElseThrow(new ProductNotFoundException());
         productList.deleteById(id);
     }
 
     @PutMapping("/{id}")
-    public Product updateProduct(@RequestBody Product product, @PathVariable Long id) {
+    Product updateProduct(@RequestBody Product product, @PathVariable Long id) {
         id (product.getId() != id) {
-            throw new ProductIdMismatchException();
+//            throw new ProductIdMismatchException();
         }
         productList.findById(id)
-            .orElseThrow(ProductNotFoundException::new);
+//            .orElseThrow(new ProductNotFoundException())
         return productList.save(product);
     }
 }
