@@ -2,11 +2,14 @@ plugins {
 	id 'org.springframework.boot' version '2.1.7.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
+	id 'groovy'
 }
 
 group = 'com.product'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
+
+//mainClassName = 'main.groovy.com.product.api.ApiApplication'
 
 repositories {
 	mavenCentral()
