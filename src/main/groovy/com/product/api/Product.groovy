@@ -1,6 +1,6 @@
 package com.product.api
 
-import org.springframework.data.annotation.Id
+//import org.springframework.data.annotation.Id
 
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -10,7 +10,7 @@ class Product {
 
     //add @canonical, look it up
 
-    @Id
+//    @Id
     @GeneratedValue //(strategy = GenerationType.AUTO)
     long id;
 
